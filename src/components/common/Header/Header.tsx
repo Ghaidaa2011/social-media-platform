@@ -16,8 +16,8 @@ import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { actAuthLogout } from "../../../store/auth/authSlice";
 import { CircularProgress } from "@mui/material";
 import { useNavigate } from "react-router";
-import LoginForm from "../LoginModal/LoginModal";
-import RegisterModal from "../RegisterModal/RegisterModal";
+import LoginButton from "../LoginModal/LoginButton";
+import RegisterButton from "../RegisterModal/RegisterButton";
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -232,8 +232,8 @@ function Header() {
             </>
           ) : (
             <>
-              <LoginForm />
-              <RegisterModal />
+              <LoginButton />
+              <RegisterButton />
             </>
           )}
         </Toolbar>

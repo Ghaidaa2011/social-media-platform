@@ -22,7 +22,7 @@ const Toast = () => {
           onClose={handleClose}
           severity={toast?.severity}
           variant="filled"
-          sx={{ width: "100%" }}
+          sx={{ width: { xs: "100%", lg: "265px" } }}
         >
           {toast?.message}
         </Alert>

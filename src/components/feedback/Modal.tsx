@@ -1,27 +1,25 @@
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Divider,
-  IconButton,
-} from "@mui/material";
+import { Dialog, DialogTitle, Divider, IconButton } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { closeModal } from "../../store/Modal/modalSlice";
+import { ReactNode } from "react";
 
-const Modal = () => {
-  const { isOpen } = useAppSelector((state) => state.modal);
-  const dispatch = useAppDispatch();
+interface IModalProps {
+  isOpen: boolean;
+  titleModal: string;
+  closeModalHandler: () => void;
+  children: ReactNode;
+}
+const Modal = ({
+  isOpen,
+  titleModal,
+  closeModalHandler,
+  children,
+}: IModalProps) => {
   return (
     <Dialog
       open={isOpen}
-      onClose={() => {
-        dispatch(closeModal());
-      }}
+      onClose={closeModalHandler}
       PaperProps={{
         component: "form",
-        // onSubmit: handleSubmit,
       }}
     >
       <DialogTitle
@@ -31,19 +29,13 @@ const Modal = () => {
           alignItems: "center",
         }}
       >
-        Login
-        <IconButton
-          aria-label="add a comment"
-          onClick={() => {
-            dispatch(closeModal());
-          }}
-        >
+        {titleModal}
+        <IconButton aria-label="add a comment" onClick={closeModalHandler}>
           <CloseRoundedIcon />
         </IconButton>
       </DialogTitle>
       <Divider />
-      <DialogContent sx={{ paddingY: "0px" }}></DialogContent>
-      <DialogActions></DialogActions>
+      {children}
     </Dialog>
   );
 };
