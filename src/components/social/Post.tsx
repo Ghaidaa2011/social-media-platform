@@ -78,7 +78,7 @@ const Post = memo(
             tags.map((tag, index) => (
               <Chip
                 key={index}
-                label={tag}
+                label={tag.arabic_name}
                 size="small"
                 sx={{ marginX: "5px" }}
               />

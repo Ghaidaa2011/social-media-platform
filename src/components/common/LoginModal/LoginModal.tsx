@@ -1,5 +1,4 @@
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import { CircularProgress } from "@mui/material";
@@ -8,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { actAuthLogin, resetUI } from "../../../store/auth/authSlice";
 import { showToast } from "../../../store/toast/toastsSlice";
 import { closeModal } from "../../../store/Modal/modalSlice";
+import Input from "../../ui/Input";
 
 const LoginModal = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
@@ -39,25 +39,17 @@ const LoginModal = () => {
   return (
     <>
       <DialogContent sx={{ paddingY: "0px" }}>
-        <TextField
-          margin="dense"
-          id="name"
-          name="username"
-          label="User Name"
-          fullWidth
-          variant="standard"
+        <Input
           value={formData.username}
           onChange={inputHandler}
+          name="username"
+          label="User Name"
         />
-        <TextField
-          id="standard-password-input"
+        <Input
           name="password"
           label="Password"
           type="password"
           autoComplete="current-password"
-          variant="standard"
-          fullWidth
-          margin="dense"
           value={formData.password}
           onChange={inputHandler}
         />

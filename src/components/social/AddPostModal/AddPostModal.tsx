@@ -3,15 +3,14 @@ import {
   CircularProgress,
   DialogActions,
   DialogContent,
-  TextField,
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { actCreatePost, actGetPosts } from "../../../store/posts/postsSlice";
 import { closeModal } from "../../../store/Modal/modalSlice";
 import { showToast } from "../../../store/toast/toastsSlice";
+import Input from "../../ui/Input";
+import FileUploadButton from "../../ui/FileUploadButton";
 
 const AddPostModal = () => {
   const dispatch = useAppDispatch();
@@ -43,59 +42,28 @@ const AddPostModal = () => {
   };
   const isFormInvalid =
     formData.title.trim() === "" || formData.body.trim() === "";
-
-  const VisuallyHiddenInput = styled("input")({
-    clip: "rect(0 0 0 0)",
-    clipPath: "inset(50%)",
-    height: 1,
-    overflow: "hidden",
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    whiteSpace: "nowrap",
-    width: 1,
-  });
   return (
     <>
       <DialogContent sx={{ paddingY: "0px" }}>
-        <TextField
-          margin="dense"
-          id="title"
+        <Input
           name="title"
           label="Title"
-          fullWidth
-          variant="standard"
           value={formData.title}
           onChange={inputHandler}
         />
-        <TextField
-          margin="dense"
-          id="body"
+        <Input
           name="body"
           label="What do you think about?"
-          type="text"
-          fullWidth
-          variant="standard"
           multiline
           rows={4}
           value={formData.body}
           onChange={inputHandler}
         />
-        <Button
-          sx={{ marginTop: "3vh" }}
-          component="label"
-          role={undefined}
-          variant="contained"
-          tabIndex={-1}
-          startIcon={<CloudUploadIcon />}
-        >
-          {formData.image ? formData.image.name : "Photo/Video"}
-          <VisuallyHiddenInput
-            type="file"
-            accept="image/*,video/*"
-            onChange={handleImageChange}
-          />
-        </Button>
+        <FileUploadButton
+          onChange={handleImageChange}
+          accept="image/*,video/*"
+          label="Photo/Video"
+        />
       </DialogContent>
       <DialogActions>
         <Button

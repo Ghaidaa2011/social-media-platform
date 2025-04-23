@@ -12,7 +12,7 @@ const actGetPosts = createAsyncThunk(
   async (_, thunkAPI) => {
     const { rejectWithValue, signal } = thunkAPI
     try {
-      const postsResponse = await api.get<TResponse>("/posts?limit=5", { signal })
+      const postsResponse = await api.get<TResponse>("/posts?limit=100&page=1", { signal })
       return postsResponse.data.data;
     } catch (error) {
       return rejectWithValue(AxiosErrorHandler(error))

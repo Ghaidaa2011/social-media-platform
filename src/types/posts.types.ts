@@ -4,7 +4,7 @@ export interface IPost {
   body: string;
   author: IAuthor;
   image?: string;
-  tags: [],
+  tags: { arabic_name: string; name?: string; description?: string }[],
   created_at: string;
   comments_count: number
 }

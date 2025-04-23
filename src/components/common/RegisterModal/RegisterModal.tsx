@@ -1,17 +1,16 @@
 import {
-  TextField,
   Button,
   CircularProgress,
   DialogContent,
   DialogActions,
 } from "@mui/material";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import { styled } from "@mui/material/styles";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { actAuthRegister, resetUI } from "../../../store/auth/authSlice";
 import { showToast } from "../../../store/toast/toastsSlice";
 import { closeModal } from "../../../store/Modal/modalSlice";
+import Input from "../../ui/Input";
+import FileUploadButton from "../../ui/FileUploadButton";
 
 const RegisterModal = () => {
   const { loading } = useAppSelector((state) => state.authentication);
@@ -43,17 +42,6 @@ const RegisterModal = () => {
         dispatch(showToast({ message: error, severity: "error" }));
       });
   };
-  const VisuallyHiddenInput = styled("input")({
-    clip: "rect(0 0 0 0)",
-    clipPath: "inset(50%)",
-    height: 1,
-    overflow: "hidden",
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    whiteSpace: "nowrap",
-    width: 1,
-  });
   useEffect(() => {
     return () => {
       dispatch(resetUI());
@@ -62,60 +50,31 @@ const RegisterModal = () => {
   return (
     <>
       <DialogContent sx={{ paddingY: "0px" }}>
-        <Button
-          sx={{ marginTop: "3vh" }}
-          component="label"
-          role={undefined}
-          variant="contained"
-          tabIndex={-1}
-          startIcon={<CloudUploadIcon />}
-        >
-          {formData.image ? formData.image.name : "Photo/Video"}
-          <VisuallyHiddenInput
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-          />
-        </Button>
-        <TextField
+        <FileUploadButton onChange={handleImageChange} label="Photo" />
+        <Input
           value={formData.name}
           onChange={inputHandler}
-          type="text"
           name="name"
-          id="name"
           label="Name"
-          variant="standard"
-          fullWidth
         />
-        <TextField
+        <Input
           value={formData.username}
           onChange={inputHandler}
-          type="text"
           name="username"
-          id="username"
           label="User Name"
-          variant="standard"
-          fullWidth
         />
-        <TextField
+        <Input
           value={formData.email}
           onChange={inputHandler}
-          type="text"
           name="email"
-          id="email"
           label="Email"
-          variant="standard"
-          fullWidth
         />
-        <TextField
+        <Input
           value={formData.password}
           onChange={inputHandler}
           type="password"
           name="password"
-          id="password"
           label="Password"
-          variant="standard"
-          fullWidth
         />
       </DialogContent>
       <DialogActions>
