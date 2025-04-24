@@ -59,6 +59,7 @@ function Header() {
     <AppBar
       position="sticky"
       sx={{
+        marginBottom: { xs: "1vh", sm: "2vh", md: "3vh", lg: "4vh" },
         borderBottomLeftRadius: "5px",
         borderBottomRightRadius: "5px",
         backgroundColor: "rgba(255,255,255,0.9)",

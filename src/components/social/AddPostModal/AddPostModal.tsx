@@ -6,7 +6,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { actCreatePost, actGetPosts } from "../../../store/posts/postsSlice";
+import { actCreatePost } from "../../../store/posts/postsSlice";
 import { closeModal } from "../../../store/Modal/modalSlice";
 import { showToast } from "../../../store/toast/toastsSlice";
 import Input from "../../ui/Input";
@@ -33,7 +33,6 @@ const AddPostModal = () => {
       .unwrap()
       .then(() => {
         setFormData({ title: "", body: "", image: null });
-        dispatch(actGetPosts());
         dispatch(closeModal());
       })
       .catch((error) => {

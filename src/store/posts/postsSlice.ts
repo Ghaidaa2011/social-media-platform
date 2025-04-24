@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import actGetPosts from "./act/actGetPosts";
 import { IPost, isString, TLoading } from "../../types";
 import actCreatePost from "./act/actCreatePost";
 
@@ -20,21 +19,6 @@ const postsSlice = createSlice({
   reducers: {
   },
   extraReducers: (builder) => {
-    //GET POSTS
-    builder.addCase(actGetPosts.pending, (state) => {
-      state.loading = "pending";
-      state.error = null;
-    });
-    builder.addCase(actGetPosts.fulfilled, (state, action: PayloadAction<IPost[]>) => {
-      state.loading = "succeeded";
-      state.records = action.payload;
-    });
-    builder.addCase(actGetPosts.rejected, (state, action) => {
-      state.loading = "failed";
-      if (isString(action.payload)) {
-        state.error = action.payload;
-      }
-    });
     // CREATE A POST
     builder.addCase(actCreatePost.pending, (state) => {
       state.loading = "pending";
@@ -53,5 +37,5 @@ const postsSlice = createSlice({
   },
 });
 
-export { actGetPosts, actCreatePost };
+export { actCreatePost };
 export default postsSlice.reducer;

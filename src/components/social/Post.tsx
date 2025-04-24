@@ -17,7 +17,7 @@ const Post = memo(
     return (
       <Card
         sx={{
-          marginY: { xs: "2vh", sm: "3vh", md: "4vh", lg: "5vh" },
+          marginBottom: { xs: "1vh", sm: "2vh", md: "3vh", lg: "4vh" },
           boxShadow: "3px 3px 3px 3px rgba(0,0,0,0.9)",
         }}
       >
@@ -46,7 +46,7 @@ const Post = memo(
         ) : (
           <CardMedia
             component="img"
-            sx={{ height: { xs: "30vh", sm: "40vh", md: "50vh" } }}
+            sx={{ height: { xs: "25vh", sm: "30vh", md: "40vh" } }}
             style={{
               padding: "10px",
               width: "100%",
@@ -59,16 +59,21 @@ const Post = memo(
             loading="lazy"
           />
         )}
-        <CardContent>
+        <CardContent sx={{ padding: "8px 16px" }}>
           <Typography style={{ fontWeight: "700" }}>{title}</Typography>
           <Typography style={{ fontWeight: "500", fontSize: "0.8rem" }}>
             {body}
           </Typography>
         </CardContent>
         <Divider variant="middle" />
-        <CardActions disableSpacing sx={{ cursor: "pointer" }}>
+        <CardActions
+          disableSpacing
+          sx={{ cursor: "pointer", padding: "4px 8px" }}
+        >
           <IconButton aria-label="add a comment">
-            <AddCommentIcon style={{ color: "rgba(0,0,0,0.8)" }} />
+            <AddCommentIcon
+              style={{ color: "rgba(0,0,0,0.8)", fontSize: "1.3rem" }}
+            />
           </IconButton>
           <Typography variant="subtitle1" color="initial">
             ({comments_count}) comments
