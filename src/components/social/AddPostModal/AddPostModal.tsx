@@ -4,7 +4,7 @@ import {
   DialogActions,
   DialogContent,
 } from "@mui/material";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { actCreatePost } from "../../../store/posts/postsSlice";
 import { closeModal } from "../../../store/Modal/modalSlice";
@@ -21,9 +21,12 @@ const AddPostModal = () => {
     body: "",
     image: null as File | null,
   });
-  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const inputHandler = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+    },
+    [formData]
+  );
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
     setFormData({ ...formData, image: file });

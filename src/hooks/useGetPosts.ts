@@ -4,16 +4,15 @@ import { IPost } from "../types";
 interface PostsResponse {
   data: IPost[];
 }
-const getPosts = async (): Promise<IPost[]> => {
-  const postsResponse = await api.get<PostsResponse>("/posts?limit=100&page=1");
+const getPosts = async (signal?: AbortSignal): Promise<IPost[]> => {
+  const postsResponse = await api.get<PostsResponse>("/posts?limit=100&page=1", { signal });
   return postsResponse.data.data
 }
 const useGetPosts = () => {
   return useQuery<IPost[], Error>({
     queryKey: ["posts"],
-    queryFn: getPosts,
+    queryFn: ({ signal }) => getPosts(signal),
     staleTime: 3 * 1000
-    // retry: 2, // Retry failed requests twice
   })
 }
 export default useGetPosts

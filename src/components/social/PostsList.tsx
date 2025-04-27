@@ -10,7 +10,6 @@ const PostsList = () => {
   const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfinitePosts();
   const { ref, inView } = useInView();
-  console.log(inView);
   useEffect(() => {
     if (inView && hasNextPage) {
       fetchNextPage();

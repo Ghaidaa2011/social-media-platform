@@ -6,12 +6,18 @@ export interface IPost {
   image?: string;
   tags: { arabic_name: string; name?: string; description?: string }[],
   created_at: string;
-  comments_count: number
+  comments_count: number;
+  comments?: IComment[]
 }
-interface IAuthor {
-  id: number;
+export interface IAuthor {
+  id?: number;
   profile_image: string;
-  username: string;
+  username?: string;
   name: string;
-  email: string
+  email?: string
+}
+export interface IComment {
+  id: number
+  body: string
+  author: IAuthor
 }

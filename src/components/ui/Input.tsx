@@ -7,6 +7,9 @@ interface InputProps extends Omit<TextFieldProps, "onChange"> {
   value: string | number;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type?: string;
+  error?: boolean;
+  helperText?: string;
+  autoFocus?: boolean;
 }
 const Input = ({
   name,
@@ -16,7 +19,9 @@ const Input = ({
   type = "text",
   variant = "standard",
   fullWidth = true,
-
+  error = false,
+  helperText = "",
+  autoFocus = false,
   ...rest
 }: InputProps) => {
   return (
@@ -30,6 +35,9 @@ const Input = ({
       variant={variant}
       fullWidth={fullWidth}
       margin="dense"
+      error={error}
+      helperText={helperText}
+      autoFocus={autoFocus}
       {...rest}
     />
   );

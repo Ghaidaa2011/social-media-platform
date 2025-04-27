@@ -21,12 +21,18 @@ const Modal = ({
       PaperProps={{
         component: "form",
       }}
+      fullWidth
     >
       <DialogTitle
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          position: "sticky",
+          top: 0,
+          backgroundColor: "white",
+          zIndex: 1,
+          boxShadow: "3px 3px 1px 1px rgba(0, 0, 0, 0.03)",
         }}
       >
         {titleModal}
