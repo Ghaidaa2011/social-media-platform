@@ -7,13 +7,15 @@ import ModalManger from "../components/feedback/ModalManger";
 const MainLayout = () => {
   console.log("MainLayout");
   return (
-    <Container maxWidth={"md"}>
+    <>
       <Header />
-      <Outlet />
-      <AddPostButton />
-      <Toast />
-      <ModalManger />
-    </Container>
+      <Container maxWidth={"md"}>
+        <Outlet />
+        <AddPostButton />
+        <Toast />
+        <ModalManger />
+      </Container>
+    </>
   );
 };
 export default MainLayout;

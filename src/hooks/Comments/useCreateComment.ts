@@ -1,8 +1,8 @@
 import { useMutation, UseMutationResult, useQueryClient } from "@tanstack/react-query";
-import api from "../services/axios-global";
-import { IComment, IPost } from "../types/posts.types";
+import api from "../../services/axios-global";
+import { IComment, IPost } from "../../types/posts.types";
 import { AxiosError } from "axios";
-import { useAppSelector } from "../store/hooks";
+import { useAppSelector } from "../../store/hooks";
 
 type IData = {
   id: number;
@@ -49,7 +49,8 @@ const useCreateComment = (): UseMutationResult<IComment, AxiosError, IData> => {
       }
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["posts", "infinite"] })
+      queryClient.invalidateQueries({ queryKey: ["posts", "infinite"], })
+      queryClient.invalidateQueries({ queryKey: ["user"], exact: false });
     },
     onError: (_, __, rollBack) => { if (rollBack) { rollBack() } }
   })

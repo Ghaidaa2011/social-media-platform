@@ -6,7 +6,7 @@ import {
 } from "@mui/material";
 import { useAppDispatch } from "../../../store/hooks";
 import { closeModal } from "../../../store/Modal/modalSlice";
-import useDeletePost from "../../../hooks/useDeletePost";
+import useDeletePost from "../../../hooks/Posts/useDeletePost";
 import { showToast } from "../../../store/toast/toastsSlice";
 
 const DeletePostModal = ({ id }: { id: number }) => {
@@ -16,6 +16,12 @@ const DeletePostModal = ({ id }: { id: number }) => {
     deletePost.mutate(id, {
       onSuccess: () => {
         dispatch(closeModal());
+        dispatch(
+          showToast({
+            message: "Post deleted successfully",
+            severity: "success",
+          })
+        );
       },
       onError: () => {
         dispatch(
@@ -27,7 +33,11 @@ const DeletePostModal = ({ id }: { id: number }) => {
   return (
     <>
       <DialogContent>
-        <DialogContentText id="alert-dialog-description">
+        <DialogContentText
+          id="alert-dialog-description"
+          fontSize={"1.2rem"}
+          fontWeight={"bold"}
+        >
           Do you want to delete this post?
         </DialogContentText>
       </DialogContent>

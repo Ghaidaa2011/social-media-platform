@@ -62,10 +62,13 @@ function Header() {
         marginBottom: { xs: "1vh", sm: "2vh", md: "3vh", lg: "4vh" },
         borderBottomLeftRadius: "5px",
         borderBottomRightRadius: "5px",
-        backgroundColor: "rgba(255,255,255,0.9)",
+        backgroundColor: "rgba(255,255,255)",
         color: "black",
         boxShadow: "3px 3px 3px 3px rgba(0,0,0,0.9)",
-        "& .MuiToolbar-regular": { height: "56px" },
+        "& .MuiToolbar-regular": {
+          height: "48px",
+          minHeight: "48px",
+        },
       }}
     >
       <Container maxWidth="xl">
@@ -116,11 +119,13 @@ function Header() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItem onClick={handleCloseNavMenu}>
+              <MenuItem
+                onClick={() => {
+                  handleCloseNavMenu();
+                  navigate("/");
+                }}
+              >
                 <Typography textAlign="center">Home</Typography>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">Profile</Typography>
               </MenuItem>
             </Menu>
           </Box>
@@ -154,15 +159,6 @@ function Header() {
             >
               Home
             </Button>
-            <Button
-              onClick={() => {
-                navigate("/");
-                handleCloseNavMenu();
-              }}
-              sx={{ my: 1, color: "black", display: "block" }}
-            >
-              Profile
-            </Button>
           </Box>
           {/* ===links=== */}
 
@@ -185,6 +181,7 @@ function Header() {
                       <Avatar
                         alt={user?.name}
                         src={user?.profile_image || undefined}
+                        sx={{ width: "35px", height: "35px" }}
                       />
                     </IconButton>
                     <Typography
@@ -210,7 +207,12 @@ function Header() {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  <MenuItem onClick={handleCloseUserMenu}>
+                  <MenuItem
+                    onClick={() => {
+                      navigate(`/profile/${user?.id}`);
+                      handleCloseUserMenu();
+                    }}
+                  >
                     <Typography textAlign="center">Profile</Typography>
                   </MenuItem>
                 </Menu>

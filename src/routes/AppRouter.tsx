@@ -3,12 +3,16 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import MainLayout from "../layouts/MainLayout";
 //Pages
 import Home from "../pages/Home/Home";
+import Profile from "../pages/Profile/Profile";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    children: [{ index: true, element: <Home /> }],
+    children: [
+      { index: true, element: <Home /> },
+      { path: "profile/:id", element: <Profile /> },
+    ],
   },
 ]);
 const AppRouter = () => {

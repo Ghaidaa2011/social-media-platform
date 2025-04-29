@@ -1,5 +1,5 @@
 import { IconButton } from "@mui/material";
-import AddCommentIcon from "@mui/icons-material/AddComment";
+import ModeCommentRoundedIcon from "@mui/icons-material/ModeCommentRounded";
 import { useAppDispatch } from "../../../store/hooks";
 import { openModal } from "../../../store/Modal/modalSlice";
 import { IPost } from "../../../types";
@@ -34,7 +34,7 @@ const AddCommentButton = ({
         );
       }}
     >
-      <AddCommentIcon
+      <ModeCommentRoundedIcon
         style={{ color: "rgba(0,0,0,0.8)", fontSize: "1.3rem" }}
       />
     </IconButton>

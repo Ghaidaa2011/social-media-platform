@@ -7,6 +7,7 @@ import { Divider } from "@mui/material";
 
 import { IAuthor } from "../../types/posts.types";
 import { useAppSelector } from "../../store/hooks";
+import { useNavigate } from "react-router";
 
 export interface PostInfoProps {
   title: string;
@@ -27,24 +28,53 @@ const PostInfo = ({
   actions,
 }: PostInfoProps) => {
   const { user } = useAppSelector((state) => state.authentication);
+  const navigate = useNavigate();
 
   return (
     <>
       <CardHeader
-        sx={{ padding: "8px 16px" }}
+        sx={{
+          padding: "8px 16px",
+          height: "48px",
+          "& .MuiCardHeader-content": {
+            height: "48px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            gap: "2px",
+          },
+          "& .MuiCardHeader-action": {
+            alignSelf: "center",
+            marginTop: 0,
+            marginRight: 0,
+          },
+        }}
         avatar={
           <Avatar
+            onClick={() => navigate(`/profile/${author?.id}`)}
             aria-label="profile"
             src={
               typeof author?.profile_image === "string"
                 ? author.profile_image
                 : ""
             }
+            sx={{ width: "35px", height: "35px", cursor: "pointer" }}
           />
         }
-        title={<h3>{author?.username}</h3>}
+        title={
+          <h3
+            onClick={() => navigate(`/profile/${author?.id}`)}
+            style={{ margin: 0, lineHeight: 1.2, cursor: "pointer" }}
+          >
+            {author?.username}
+          </h3>
+        }
         subheader={
-          <Typography variant="caption" color="text.secondary">
+          <Typography
+            variant="caption"
+            color="text.secondary"
+            sx={{ lineHeight: 1 }}
+          >
             {created_at}
           </Typography>
         }

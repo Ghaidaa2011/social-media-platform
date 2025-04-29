@@ -1,6 +1,6 @@
 import { Box, CircularProgress, Stack } from "@mui/material";
 import Post from "./Post";
-import useInfinitePosts from "../../hooks/useInfinitePosts";
+import useInfinitePosts from "../../hooks/Posts/useInfinitePosts";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import { IPost } from "../../types";

@@ -1,6 +1,6 @@
 import { QueryFunctionContext, useInfiniteQuery } from "@tanstack/react-query";
-import api from "../services/axios-global"
-import { IPost } from "../types";
+import api from "../../services/axios-global"
+import { IPost } from "../../types";
 interface PostsResponse {
   data: IPost[];
   meta: {

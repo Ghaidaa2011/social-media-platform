@@ -1,8 +1,8 @@
 import { useMutation, UseMutationResult, useQueryClient } from "@tanstack/react-query";
-import api from "../services/axios-global";
-import { IPost } from "../types";
+import api from "../../services/axios-global";
+import { IPost } from "../../types";
 import { AxiosError } from "axios";
-import { useAppSelector } from "../store/hooks";
+import { useAppSelector } from "../../store/hooks";
 
 interface UpdatePostData {
   id: number;
@@ -40,6 +40,7 @@ const useUpdatePost = (): UseMutationResult<IPost, AxiosError, UpdatePostData> =
     mutationFn: (data) => updatePost(data, token),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["posts", "infinite"] });
+      queryClient.invalidateQueries({ queryKey: ["user"], exact: false });
     },
   });
 };

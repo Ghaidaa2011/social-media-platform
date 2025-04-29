@@ -1,7 +1,7 @@
 import { useAppDispatch } from "../../../store/hooks";
 import { closeModal } from "../../../store/Modal/modalSlice";
 import { showToast } from "../../../store/toast/toastsSlice";
-import useCreatePost from "../../../hooks/useCreatePost";
+import useCreatePost from "../../../hooks/Posts/useCreatePost";
 import PostForm from "../PostModal/PostModal";
 
 const AddPostModal = () => {

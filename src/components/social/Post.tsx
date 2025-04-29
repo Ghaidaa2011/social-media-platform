@@ -64,7 +64,7 @@ const Post = memo(
               author={author}
             />
             <Typography variant="subtitle1" color="initial">
-              ({comments_count}) comments
+              {comments_count}
             </Typography>
 
             {tags &&

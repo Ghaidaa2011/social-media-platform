@@ -23,10 +23,12 @@ import { useCallback, useState } from "react";
 //feedback
 import Spinner from "../../feedback/Spinner";
 //Queries
-import useGetPostInfo from "../../../hooks/useGetPostInfo";
-import useCreateComment from "../../../hooks/useCreateComment";
+import useGetPostInfo from "../../../hooks/Posts/useGetPostInfo";
+import useCreateComment from "../../../hooks/Comments/useCreateComment";
 //types
 import { IPost } from "../../../types";
+import { useNavigate } from "react-router";
+import { closeModal } from "../../../store/Modal/modalSlice";
 
 const AddCommentModal = ({
   id,
@@ -37,6 +39,8 @@ const AddCommentModal = ({
   image,
   comments_count,
 }: IPost) => {
+  const navigate = useNavigate();
+
   const [commentInput, setCommentInput] = useState("");
   const [isError, setIsError] = useState(false);
   const addCommentHandler = useCallback(
@@ -92,7 +96,15 @@ const AddCommentModal = ({
       }}
     >
       <ListItemAvatar>
-        <Avatar alt={comment.author.name} src={comment.author.profile_image} />
+        <Avatar
+          alt={comment.author.name}
+          src={comment.author.profile_image}
+          onClick={() => {
+            navigate(`/profile/${comment.author.id}`);
+            dispatch(closeModal());
+          }}
+          sx={{ cursor: "pointer" }}
+        />
       </ListItemAvatar>
       <ListItemText
         sx={{
@@ -101,7 +113,13 @@ const AddCommentModal = ({
           padding: "10px",
         }}
         primary={
-          <Typography style={{ fontWeight: "800", fontSize: "1rem" }}>
+          <Typography
+            onClick={() => {
+              navigate(`/profile/${comment.author.id}`);
+              dispatch(closeModal());
+            }}
+            style={{ fontWeight: "800", fontSize: "1rem", cursor: "pointer" }}
+          >
             {comment.author.name}
           </Typography>
         }
@@ -128,7 +146,7 @@ const AddCommentModal = ({
     >
       <Box sx={{ padding: "4px 8px" }}>
         <Typography variant="subtitle1" color="initial">
-          ({comments_count}) comments
+          {comments_count} comments
         </Typography>
       </Box>
       <Divider />

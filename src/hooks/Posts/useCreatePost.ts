@@ -1,8 +1,8 @@
 import { useMutation, UseMutationResult, useQueryClient } from "@tanstack/react-query";
-import api from "../services/axios-global"
-import { IPost } from "../types";
+import api from "../../services/axios-global"
+import { IPost } from "../../types";
 import { AxiosError } from "axios";
-import { useAppSelector } from "../store/hooks";
+import { useAppSelector } from "../../store/hooks";
 
 type TFormData = {
   title: string
@@ -34,6 +34,7 @@ const useCreatePost = (): UseMutationResult<IPost, AxiosError, TFormData> => {
     mutationFn: (formData) => createPost(formData, token),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["posts", "infinite"] });
+      queryClient.invalidateQueries({ queryKey: ["user"], exact: false });
     }
   })
 }
