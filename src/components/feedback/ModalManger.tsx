@@ -9,6 +9,8 @@ import AddCommentModal from "../social/AddCommentModal/AddCommentModal";
 import Modal from "./Modal";
 
 import { closeModal } from "../../store/Modal/modalSlice";
+import EditPostModal from "../social/EditPostModal/EditPostModal";
+import DeletePostModal from "../social/DeletePostModal/DeletePostModal";
 
 const ModalManger = () => {
   const { isOpen, titleModal, componentName, childrenProps } = useAppSelector(
@@ -26,6 +28,8 @@ const ModalManger = () => {
     RegisterModal,
     AddPostModal,
     AddCommentModal,
+    EditPostModal,
+    DeletePostModal,
   };
   let renderedComponent;
   if (componentName) {

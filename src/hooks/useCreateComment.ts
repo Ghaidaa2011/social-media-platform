@@ -11,13 +11,12 @@ type IData = {
 type TResponse = {
   data: { comment: IComment }
 };
-const createComment = async ({ id, comment }: IData, token?: string | null, signal?: AbortSignal): Promise<IComment> => {
+const createComment = async ({ id, comment }: IData, token?: string | null): Promise<IComment> => {
   const { data } = await api.post<TResponse>(`/posts/${id}/comments`, { body: comment }, {
     headers: {
       Authorization: `Bearer ${token}`,
       Accept: "application/json",
-    },
-    signal
+    }
   })
   return data.data.comment
 }
@@ -29,8 +28,9 @@ const useCreateComment = (): UseMutationResult<IComment, AxiosError, IData> => {
     mutationFn: ({ id, comment }) => createComment({ id, comment }, token),
 
     onMutate: ({ id, comment }: IData) => {
-      const previousPost = queryClient.getQueryData<IPost>(["posts", "info", id],)
-      if (previousPost && user) {
+      const currentPost = queryClient.getQueryData<IPost>(["posts", "info", id],)
+
+      if (currentPost && user) {
         const newComment: IComment = {
           id: Date.now(), // Temporary id
           body: comment,
@@ -45,12 +45,11 @@ const useCreateComment = (): UseMutationResult<IComment, AxiosError, IData> => {
       }
 
       return () => {
-        queryClient.setQueryData(["posts", "info", id], previousPost);
+        queryClient.setQueryData(["posts", "info", id], currentPost);
       }
     },
-
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["posts"], exact: false })
+      queryClient.invalidateQueries({ queryKey: ["posts", "infinite"] })
     },
     onError: (_, __, rollBack) => { if (rollBack) { rollBack() } }
   })

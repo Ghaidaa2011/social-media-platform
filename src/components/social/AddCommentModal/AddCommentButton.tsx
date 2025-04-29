@@ -19,7 +19,7 @@ const AddCommentButton = ({
       onClick={() => {
         dispatch(
           openModal({
-            titleModal: `${author?.username}'s Post and ID ${id}`,
+            titleModal: `${author?.username}'s Post`,
             componentName: "AddCommentModal",
             childrenProps: {
               id,

@@ -1,10 +1,15 @@
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
-import { Card, Chip } from "@mui/material";
-import { IPost } from "../../types";
+import { Card, Chip, Stack } from "@mui/material";
+//hooks
 import { memo } from "react";
-import PostInfo from "./PostInfo";
+//components
 import AddCommentButton from "./AddCommentModal/AddCommentButton";
+import PostInfo from "./PostInfo";
+import EditPostButton from "./EditPostModal/EditPostButton";
+import DeletePostButton from "./DeletePostModal/DeletePostButton";
+//types
+import { IPost } from "../../types";
 
 const Post = memo(
   ({
@@ -18,7 +23,6 @@ const Post = memo(
     author,
   }: IPost) => {
     console.log("Post");
-
     return (
       <Card
         sx={{
@@ -30,8 +34,20 @@ const Post = memo(
           title={title}
           body={body}
           image={image}
-          created_at={created_at}
+          created_at={created_at as string}
           author={author}
+          actions={
+            <Stack direction="row" spacing={1}>
+              <DeletePostButton id={id} />
+              <EditPostButton
+                id={id}
+                title={title}
+                body={body}
+                image={image}
+                author={author}
+              />
+            </Stack>
+          }
         >
           <CardActions
             disableSpacing

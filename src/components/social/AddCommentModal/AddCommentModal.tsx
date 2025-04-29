@@ -11,15 +11,22 @@ import {
   Typography,
 } from "@mui/material";
 
-import { IPost } from "../../../types";
+//components
 import PostInfo from "../PostInfo";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import Input from "../../ui/Input";
-import { useCallback, useState } from "react";
+//store
 import { showToast } from "../../../store/toast/toastsSlice";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+//ui
+import Input from "../../ui/Input";
+//hooks
+import { useCallback, useState } from "react";
+//feedback
 import Spinner from "../../feedback/Spinner";
+//Queries
 import useGetPostInfo from "../../../hooks/useGetPostInfo";
 import useCreateComment from "../../../hooks/useCreateComment";
+//types
+import { IPost } from "../../../types";
 
 const AddCommentModal = ({
   id,
@@ -116,7 +123,7 @@ const AddCommentModal = ({
       title={title}
       body={body}
       image={image}
-      created_at={created_at}
+      created_at={created_at as string}
       author={author}
     >
       <Box sx={{ padding: "4px 8px" }}>

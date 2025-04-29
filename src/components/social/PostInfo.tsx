@@ -4,7 +4,9 @@ import CardContent from "@mui/material/CardContent";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { Divider } from "@mui/material";
+
 import { IAuthor } from "../../types/posts.types";
+import { useAppSelector } from "../../store/hooks";
 
 export interface PostInfoProps {
   title: string;
@@ -13,6 +15,7 @@ export interface PostInfoProps {
   created_at: string;
   author: IAuthor;
   children?: React.ReactNode;
+  actions?: React.ReactNode;
 }
 const PostInfo = ({
   title,
@@ -21,7 +24,10 @@ const PostInfo = ({
   created_at,
   author,
   children,
+  actions,
 }: PostInfoProps) => {
+  const { user } = useAppSelector((state) => state.authentication);
+
   return (
     <>
       <CardHeader
@@ -42,6 +48,7 @@ const PostInfo = ({
             {created_at}
           </Typography>
         }
+        action={user?.id === author?.id && actions}
       />
       <Divider />
       {typeof image !== "string" || image === "" ? (

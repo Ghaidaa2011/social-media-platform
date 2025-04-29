@@ -78,11 +78,8 @@ const RegisterModal = () => {
         />
       </DialogContent>
       <DialogActions>
-        <Button
-          variant="contained"
-          onClick={handleSubmitRegister}
-          disabled={loading == "pending"}
-        >
+        <Button onClick={() => dispatch(closeModal())}>Cancel</Button>
+        <Button onClick={handleSubmitRegister} disabled={loading == "pending"}>
           {loading == "pending" ? <CircularProgress size={24} /> : "Register"}
         </Button>
       </DialogActions>

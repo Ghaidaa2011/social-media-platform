@@ -14,7 +14,8 @@ const getPosts = async ({ pageParam }: QueryFunctionContext): Promise<PostsRespo
 }
 const useInfinitePosts = () => {
   return useInfiniteQuery<PostsResponse, Error>({
-    queryKey: ["posts"],
+    refetchOnWindowFocus: false,
+    queryKey: ["posts", "infinite"],
     queryFn: getPosts,
     initialPageParam: 1,
     getNextPageParam: (pageParam) => {
