@@ -92,21 +92,13 @@ const Profile = () => {
         <>
           {userPosts && userPosts.length > 0 ? (
             <>
-              <Typography
-                variant="body1"
-                color="HighlightText"
-                sx={{ marginY: "15px" }}
-              >
+              <Typography variant="body1" sx={{ marginY: "15px" }}>
                 {user?.name}'s Posts
               </Typography>
               <Stack>{userPosts}</Stack>
             </>
           ) : (
-            <Typography
-              variant="body1"
-              color="HighlightText"
-              sx={{ marginY: "15px" }}
-            >
+            <Typography variant="body1" sx={{ marginY: "15px" }}>
               No posts yet. Be the first to share something!
             </Typography>
           )}

@@ -82,18 +82,16 @@ const RegisterModal = () => {
                 ctx.scale(1, -1);
                 break;
               case 5:
-                ctx.rotate(Math.PI / 2);
-                ctx.scale(1, -1);
+                ctx.rotate(-Math.PI / 2);
                 break;
               case 6:
-                ctx.rotate(Math.PI / 2);
+                ctx.rotate(-Math.PI / 2);
                 break;
               case 7:
-                ctx.rotate(-Math.PI / 2);
-                ctx.scale(1, -1);
+                ctx.rotate(Math.PI / 2);
                 break;
               case 8:
-                ctx.rotate(-Math.PI / 2);
+                ctx.rotate(Math.PI / 2);
                 break;
               default:
                 break;

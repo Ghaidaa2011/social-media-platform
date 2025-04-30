@@ -60,7 +60,6 @@ function Header() {
       position="sticky"
       sx={{
         marginBottom: { xs: "1vh", sm: "2vh", md: "3vh", lg: "4vh" },
-
         backgroundColor: "rgba(255,255,255)",
         color: "black",
         boxShadow: "3px 3px 3px 3px rgba(0,0,0,0.9)",
@@ -184,7 +183,9 @@ function Header() {
                       />
                     </IconButton>
                     <Typography
-                      style={{ fontWeight: "500", fontSize: "0.9rem" }}
+                      variant="h5"
+                      color="initial"
+                      fontWeight={"bold"}
                     >
                       {user ? user.name : "guest"}
                     </Typography>
