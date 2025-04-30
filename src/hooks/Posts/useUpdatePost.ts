@@ -26,7 +26,6 @@ const updatePost = async ({ id, post }: UpdatePostData, token?: string | null): 
   const { data } = await api.post<IPost>(`/posts/${id}`, formData, {
     headers: {
       Authorization: `Bearer ${token}`,
-      Accept: "application/json",
     }
   });
   return data;

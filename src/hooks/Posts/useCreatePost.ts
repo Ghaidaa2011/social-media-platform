@@ -22,7 +22,6 @@ const createPost = async (formData: TFormData, token?: string | null): Promise<I
   const { data } = await api.post<TResponse>("/posts", multipartData, {
     headers: {
       Authorization: `Bearer ${token}`,
-      Accept: "application/json",
     }
   })
   return data.data

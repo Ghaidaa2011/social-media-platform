@@ -17,7 +17,11 @@ const Toast = () => {
   };
   return (
     <div>
-      <Snackbar open={!!toast} autoHideDuration={2000} onClose={handleClose}>
+      <Snackbar
+        open={!!toast}
+        /* autoHideDuration={2000} */
+        onClose={handleClose}
+      >
         <Alert
           onClose={handleClose}
           severity={toast?.severity}

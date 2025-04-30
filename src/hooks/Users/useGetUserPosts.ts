@@ -12,13 +12,7 @@ const useGetUserPosts = (id: number) => {
   return useQuery<IPost[], Error>({
     queryKey: ["user", "posts", id],
     queryFn: ({ signal }) => getUserPosts(id, signal),
-    select: (data) => {
-      return [...data].sort((a, b) => {
-        const dateA = new Date(a.created_at || '').getTime();
-        const dateB = new Date(b.created_at || '').getTime();
-        return dateB - dateA; // Sort in descending order (newest first)
-      });
-    }
+    refetchOnWindowFocus: false,
   })
 }
 export default useGetUserPosts

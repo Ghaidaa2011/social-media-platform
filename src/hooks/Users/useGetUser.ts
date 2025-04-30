@@ -15,6 +15,7 @@ const useGetUser = (id: number) => {
     queryKey: ["user", "info", id],
     queryFn: ({ signal }) => getUser(id, signal),
     enabled: !!id,
+    refetchOnWindowFocus: false,
   })
 }
 export default useGetUser

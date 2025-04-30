@@ -99,7 +99,7 @@ const Profile = () => {
             </>
           ) : (
             <Typography variant="body1" sx={{ marginY: "15px" }}>
-              No posts yet. Be the first to share something!
+              No posts yet. Let's share something!
             </Typography>
           )}
         </>
