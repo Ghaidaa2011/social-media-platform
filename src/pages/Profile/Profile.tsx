@@ -7,7 +7,6 @@ import Spinner from "../../components/feedback/Spinner";
 
 const Profile = () => {
   const paramId = useParams();
-  console.log(paramId);
   const { data: user } = useGetUser(Number(paramId.id));
   const { data: posts, isLoading } = useGetUserPosts(Number(paramId.id));
   const userPosts = posts
@@ -87,14 +86,32 @@ const Profile = () => {
           </Box>
         </Stack>
       </Box>
-      <Typography
-        variant="body1"
-        color="HighlightText"
-        sx={{ marginY: "15px" }}
-      >
-        {isLoading ? <Spinner /> : `${user?.name}'s Posts`}
-      </Typography>
-      <Stack>{userPosts}</Stack>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          {userPosts && userPosts.length > 0 ? (
+            <>
+              <Typography
+                variant="body1"
+                color="HighlightText"
+                sx={{ marginY: "15px" }}
+              >
+                {user?.name}'s Posts
+              </Typography>
+              <Stack>{userPosts}</Stack>
+            </>
+          ) : (
+            <Typography
+              variant="body1"
+              color="HighlightText"
+              sx={{ marginY: "15px" }}
+            >
+              No posts yet. Be the first to share something!
+            </Typography>
+          )}
+        </>
+      )}
     </>
   );
 };

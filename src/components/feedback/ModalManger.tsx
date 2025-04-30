@@ -1,14 +1,14 @@
-import { ReactNode } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
-import AddPostModal from "../social/AddPostModal/AddPostModal";
-import LoginModal from "../common/LoginModal/LoginModal";
-import RegisterModal from "../common/RegisterModal/RegisterModal";
-import AddCommentModal from "../social/AddCommentModal/AddCommentModal";
+import { closeModal } from "../../store/Modal/modalSlice";
 
 import Modal from "./Modal";
 
-import { closeModal } from "../../store/Modal/modalSlice";
+import AddPostModal from "../social/AddPostModal/AddPostModal";
+import LoginModal from "../auth/LoginModal/LoginModal";
+import RegisterModal from "../auth/RegisterModal/RegisterModal";
+
+import AddCommentModal from "../social/AddCommentModal/AddCommentModal";
 import EditPostModal from "../social/EditPostModal/EditPostModal";
 import DeletePostModal from "../social/DeletePostModal/DeletePostModal";
 
@@ -20,10 +20,8 @@ const ModalManger = () => {
   const closeModalHandler = () => {
     dispatch(closeModal());
   };
-  interface ComponentMap {
-    [key: string]: (childrenProps: object) => ReactNode;
-  }
-  const componentsLookUp: ComponentMap = {
+
+  const componentsLookUp: { [key: string]: React.FC<any> } = {
     LoginModal,
     RegisterModal,
     AddPostModal,

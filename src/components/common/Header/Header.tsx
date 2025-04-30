@@ -16,8 +16,8 @@ import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { actAuthLogout } from "../../../store/auth/authSlice";
 import { CircularProgress } from "@mui/material";
 import { useNavigate } from "react-router";
-import LoginButton from "../LoginModal/LoginButton";
-import RegisterButton from "../RegisterModal/RegisterButton";
+import LoginButton from "../../auth/LoginModal/LoginButton";
+import RegisterButton from "../../auth/RegisterModal/RegisterButton";
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -60,8 +60,7 @@ function Header() {
       position="sticky"
       sx={{
         marginBottom: { xs: "1vh", sm: "2vh", md: "3vh", lg: "4vh" },
-        borderBottomLeftRadius: "5px",
-        borderBottomRightRadius: "5px",
+
         backgroundColor: "rgba(255,255,255)",
         color: "black",
         boxShadow: "3px 3px 3px 3px rgba(0,0,0,0.9)",
