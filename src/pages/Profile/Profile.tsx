@@ -47,7 +47,21 @@ const Profile = () => {
               <Typography variant="caption" color="gray">
                 @{user?.username}
               </Typography>
-              <Typography variant="body1" color="initial">
+              <Typography
+                variant="body1"
+                color="initial"
+                sx={{
+                  maxWidth: {
+                    xs: "150px",
+                    sm: "250px",
+                    md: "350px",
+                    lg: "450px",
+                  },
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                }}
+              >
                 {user?.email}
               </Typography>
             </Box>
