@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { IToast } from "../../types/toast.types"
+import { IToast } from "../../types/toast.types";
 
 export interface ITodosState {
-  toast: IToast | null
+  open: boolean;
+  toast: IToast | null;
 }
 const initialState: ITodosState = {
+  open: false,
   toast: null,
 }
 export const toastsSlice = createSlice({
@@ -12,10 +14,11 @@ export const toastsSlice = createSlice({
   initialState,
   reducers: {
     showToast: (state, action: PayloadAction<IToast>) => {
+      state.open = true
       state.toast = action.payload
     },
     hideToast: (state) => {
-      state.toast = null
+      state.open = false
     },
   },
 }

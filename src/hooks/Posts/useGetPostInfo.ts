@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "../../services/axios-global"
-import { IPost } from "../../types";
+import { type IPost } from "../../types";
 
 interface responseType {
   data: IPost

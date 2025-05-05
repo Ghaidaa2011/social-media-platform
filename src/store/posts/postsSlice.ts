@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IPost, TLoading } from "../../types";
+import { type IPost, type TLoading } from "../../types";
 
 interface IPostsState {
   posts: IPost[];

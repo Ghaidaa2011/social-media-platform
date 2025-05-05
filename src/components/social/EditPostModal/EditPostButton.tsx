@@ -2,7 +2,7 @@ import { IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import { openModal } from "../../../store/Modal/modalSlice";
 import { useAppDispatch } from "../../../store/hooks";
-import { IPost } from "../../../types";
+import { type IPost } from "../../../types";
 
 const EditPostButton = ({ id, title, body, image, author }: IPost) => {
   const dispatch = useAppDispatch();

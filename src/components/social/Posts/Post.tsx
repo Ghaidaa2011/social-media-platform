@@ -4,12 +4,12 @@ import { Card, Chip, Stack } from "@mui/material";
 //hooks
 import { memo } from "react";
 //components
-import AddCommentButton from "./AddCommentModal/AddCommentButton";
+import AddCommentButton from "../AddCommentModal/AddCommentButton";
 import PostInfo from "./PostInfo";
-import EditPostButton from "./EditPostModal/EditPostButton";
-import DeletePostButton from "./DeletePostModal/DeletePostButton";
+import EditPostButton from "../EditPostModal/EditPostButton";
+import DeletePostButton from "../DeletePostModal/DeletePostButton";
 //types
-import { IPost } from "../../types";
+import { type IPost } from "../../../types";
 
 const Post = memo(
   ({
@@ -22,7 +22,6 @@ const Post = memo(
     tags,
     author,
   }: IPost) => {
-    console.log("Post");
     return (
       <Card
         sx={{

@@ -82,7 +82,10 @@ function Header() {
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
-              cursor: "default",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              navigate("/");
             }}
           >
             PROJY
@@ -142,6 +145,9 @@ function Header() {
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
+            }}
+            onClick={() => {
+              navigate("/");
             }}
           >
             PROJY

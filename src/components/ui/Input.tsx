@@ -9,7 +9,6 @@ interface InputProps extends Omit<TextFieldProps, "onChange"> {
   type?: string;
   error?: boolean;
   helperText?: string;
-  autoFocus?: boolean;
 }
 const Input = ({
   name,
@@ -17,11 +16,8 @@ const Input = ({
   value,
   onChange,
   type = "text",
-  variant = "standard",
-  fullWidth = true,
   error = false,
   helperText = "",
-  autoFocus = false,
   ...rest
 }: InputProps) => {
   return (
@@ -32,12 +28,12 @@ const Input = ({
       onChange={onChange}
       type={type}
       id={name}
-      variant={variant}
-      fullWidth={fullWidth}
+      variant="standard"
+      fullWidth={true}
       margin="dense"
       error={error}
       helperText={helperText}
-      autoFocus={autoFocus}
+      autoFocus={false}
       {...rest}
     />
   );

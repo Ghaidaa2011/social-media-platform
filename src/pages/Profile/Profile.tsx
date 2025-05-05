@@ -1,20 +1,21 @@
 import { Avatar, Box, Stack, Typography } from "@mui/material";
+import useGetUserPosts from "../../hooks/Users/useGetUserPosts";
 import useGetUser from "../../hooks/Users/useGetUser";
 import { useParams } from "react-router";
-import useGetUserPosts from "../../hooks/Users/useGetUserPosts";
-import Post from "../../components/social/Post";
-import Spinner from "../../components/feedback/Spinner";
+import Post from "../../components/social/Posts/Post";
+import LoadingHandler from "../../components/feedback/LoadingHandler/LoadingHandler";
+import LottieHandler from "../../components/feedback/LottieHandler/LottieHandler";
 
 const Profile = () => {
   const paramId = useParams();
   const { data: user } = useGetUser(Number(paramId.id));
-  const { data: posts, isLoading } = useGetUserPosts(Number(paramId.id));
+  const { data: posts, status, error } = useGetUserPosts(Number(paramId.id));
   const userPosts = posts
     ?.slice()
     .reverse()
     .map((post) => <Post key={post.id} {...post} />);
   return (
-    <>
+    <LoadingHandler status={status} type="profileInfo" error={error?.message}>
       <Box
         sx={{
           backgroundColor: "white",
@@ -86,25 +87,20 @@ const Profile = () => {
           </Box>
         </Stack>
       </Box>
-      {isLoading ? (
-        <Spinner />
-      ) : (
+      {userPosts && userPosts.length > 0 ? (
         <>
-          {userPosts && userPosts.length > 0 ? (
-            <>
-              <Typography variant="body1" sx={{ marginY: "15px" }}>
-                {user?.name}'s Posts
-              </Typography>
-              <Stack>{userPosts}</Stack>
-            </>
-          ) : (
-            <Typography variant="body1" sx={{ marginY: "15px" }}>
-              No posts yet. Let's share something!
-            </Typography>
-          )}
+          <Typography variant="body1" sx={{ marginY: "15px" }}>
+            {user?.name}'s Posts
+          </Typography>
+          <Stack>{userPosts}</Stack>
         </>
+      ) : (
+        <LottieHandler
+          type="empty"
+          message="No posts yet. Let's share something!"
+        />
       )}
-    </>
+    </LoadingHandler>
   );
 };
 export default Profile;

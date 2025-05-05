@@ -1,16 +1,16 @@
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 
-import { closeModal } from "../../store/Modal/modalSlice";
+import { closeModal } from "../../../store/Modal/modalSlice";
 
 import Modal from "./Modal";
 
-import AddPostModal from "../social/AddPostModal/AddPostModal";
-import LoginModal from "../auth/LoginModal/LoginModal";
-import RegisterModal from "../auth/RegisterModal/RegisterModal";
+import AddPostModal from "../../social/AddPostModal/AddPostModal";
+import LoginModal from "../../auth/LoginModal/LoginModal";
+import RegisterModal from "../../auth/RegisterModal/RegisterModal";
 
-import AddCommentModal from "../social/AddCommentModal/AddCommentModal";
-import EditPostModal from "../social/EditPostModal/EditPostModal";
-import DeletePostModal from "../social/DeletePostModal/DeletePostModal";
+import AddCommentModal from "../../social/AddCommentModal/AddCommentModal";
+import EditPostModal from "../../social/EditPostModal/EditPostModal";
+import DeletePostModal from "../../social/DeletePostModal/DeletePostModal";
 
 const ModalManger = () => {
   const { isOpen, titleModal, componentName, childrenProps } = useAppSelector(
@@ -21,7 +21,8 @@ const ModalManger = () => {
     dispatch(closeModal());
   };
 
-  const componentsLookUp: { [key: string]: React.FC<any> } = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const componentsMap: { [key: string]: React.FC<any> } = {
     LoginModal,
     RegisterModal,
     AddPostModal,
@@ -29,9 +30,11 @@ const ModalManger = () => {
     EditPostModal,
     DeletePostModal,
   };
+
   let renderedComponent;
+
   if (componentName) {
-    const SelectedComponent = componentsLookUp[componentName]; //LoginModal
+    const SelectedComponent = componentsMap[componentName]; //LoginModal
     if (SelectedComponent) {
       //LoginLoginModal
       renderedComponent = <SelectedComponent {...childrenProps} />; //<LogiLoginModaln/>

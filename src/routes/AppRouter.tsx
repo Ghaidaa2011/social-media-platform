@@ -1,17 +1,41 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
 //Layouts
-import MainLayout from "../layouts/MainLayout";
+const MainLayout = lazy(() => import("../layouts/MainLayout"));
 //Pages
-import Home from "../pages/Home/Home";
-import Profile from "../pages/Profile/Profile";
+const Home = lazy(() => import("../pages/Home/Home"));
+const Profile = lazy(() => import("../pages/Profile/Profile"));
+import Error from "../pages/Error/Error";
+//components
+import Spinner from "../components/feedback/Spinner/Spinner";
+import PageSuspenseFallback from "../components/feedback/PageSuspenseFallback/PageSuspenseFallback";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout />,
+    element: (
+      <Suspense fallback={<Spinner />}>
+        <MainLayout />
+      </Suspense>
+    ),
+    errorElement: <Error />,
     children: [
-      { index: true, element: <Home /> },
-      { path: "profile/:id", element: <Profile /> },
+      {
+        index: true,
+        element: (
+          <PageSuspenseFallback>
+            <Home />
+          </PageSuspenseFallback>
+        ),
+      },
+      {
+        path: "profile/:id",
+        element: (
+          <PageSuspenseFallback>
+            <Profile />
+          </PageSuspenseFallback>
+        ),
+      },
     ],
   },
 ]);

@@ -1,6 +1,5 @@
-import PostsList from "../../components/social/PostsList";
+import PostsList from "../../components/social/Posts/PostsList";
 const Home = () => {
-  console.log("Home");
   return <PostsList />;
 };
 export default Home;

@@ -5,8 +5,8 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { Divider } from "@mui/material";
 
-import { IAuthor } from "../../types/posts.types";
-import { useAppSelector } from "../../store/hooks";
+import { IAuthor } from "../../../types/posts.types";
+import { useAppSelector } from "../../../store/hooks";
 import { useNavigate } from "react-router";
 
 export interface PostInfoProps {
@@ -86,10 +86,12 @@ const PostInfo = ({
       ) : (
         <CardMedia
           component="img"
-          sx={{ height: { xs: "25vh", sm: "30vh", md: "40vh" } }}
+          sx={{ maxHeight: { xs: "40vh", sm: "45vh", md: "50vh", lg: "70vh" } }}
           style={{
             padding: "10px",
             width: "100%",
+            height: "100%",
+
             objectFit: "cover", // Crop to fit, maintaining aspect ratio
             objectPosition: "center",
             borderRadius: "15px",

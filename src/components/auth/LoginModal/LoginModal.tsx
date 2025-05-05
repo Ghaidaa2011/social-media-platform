@@ -1,28 +1,37 @@
-import Button from "@mui/material/Button";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import { CircularProgress } from "@mui/material";
-import React, { useEffect, useState } from "react";
+//hooks
+import { useEffect } from "react";
+//store
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { actAuthLogin, resetUI } from "../../../store/auth/authSlice";
 import { showToast } from "../../../store/toast/toastsSlice";
 import { closeModal } from "../../../store/Modal/modalSlice";
-import Input from "../../ui/Input";
+//form
+import { SubmitHandler, useForm } from "react-hook-form";
+import { LoginSchema, LoginType } from "./LoginSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+//components
+import Input from "../Input/Input";
+import CustomButton from "../../ui/CustomButton";
 
 const LoginModal = () => {
-  const [formData, setFormData] = useState({ username: "", password: "" });
-  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
   const dispatch = useAppDispatch();
   const { loading } = useAppSelector((state) => state.authentication);
-  const handleSubmit = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginType>({
+    mode: "onBlur",
+    resolver: zodResolver(LoginSchema),
+  });
+  const submitHandlerForm: SubmitHandler<LoginType> = (formData) => {
     dispatch(actAuthLogin(formData))
       .unwrap()
       .then(() => {
         dispatch(closeModal());
-        dispatch(resetUI());
-        setFormData({ username: "", password: "" });
         dispatch(
           showToast({ message: "Logged In Successfully!", severity: "success" })
         );
@@ -31,6 +40,7 @@ const LoginModal = () => {
         dispatch(showToast({ message: error, severity: "error" }));
       });
   };
+
   useEffect(() => {
     return () => {
       dispatch(resetUI());
@@ -40,29 +50,29 @@ const LoginModal = () => {
     <>
       <DialogContent sx={{ paddingY: "0px" }}>
         <Input
-          value={formData.username}
-          onChange={inputHandler}
-          name="username"
           label="User Name"
+          name="username"
+          register={register}
+          errorMessage={errors.username?.message}
         />
         <Input
-          name="password"
           label="Password"
           type="password"
-          autoComplete="current-password"
-          value={formData.password}
-          onChange={inputHandler}
+          name="password"
+          register={register}
+          errorMessage={errors.password?.message}
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => dispatch(closeModal())}>Cancel</Button>
-        <Button
-          type="submit"
+        <CustomButton onClick={() => dispatch(closeModal())}>
+          Cancel
+        </CustomButton>
+        <CustomButton
           disabled={loading == "pending"}
-          onClick={handleSubmit}
+          onClick={handleSubmit(submitHandlerForm)}
         >
           {loading == "pending" ? <CircularProgress size={24} /> : "Login"}
-        </Button>
+        </CustomButton>
       </DialogActions>
     </>
   );

@@ -12,23 +12,24 @@ import {
 } from "@mui/material";
 
 //components
-import PostInfo from "../PostInfo";
+import PostInfo from "../Posts/PostInfo";
 //store
 import { showToast } from "../../../store/toast/toastsSlice";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { closeModal } from "../../../store/Modal/modalSlice";
 //ui
 import Input from "../../ui/Input";
 //hooks
 import { useCallback, useState } from "react";
 //feedback
-import Spinner from "../../feedback/Spinner";
+import Spinner from "../../feedback/Spinner/Spinner";
 //Queries
 import useGetPostInfo from "../../../hooks/Posts/useGetPostInfo";
 import useCreateComment from "../../../hooks/Comments/useCreateComment";
 //types
-import { IPost } from "../../../types";
+import { type IPost } from "../../../types";
+//react-router
 import { useNavigate } from "react-router";
-import { closeModal } from "../../../store/Modal/modalSlice";
 
 const AddCommentModal = ({
   id,

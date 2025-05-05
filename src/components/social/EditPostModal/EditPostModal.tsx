@@ -1,7 +1,7 @@
 import { useAppDispatch } from "../../../store/hooks";
 import { closeModal } from "../../../store/Modal/modalSlice";
 import { showToast } from "../../../store/toast/toastsSlice";
-import { IPost } from "../../../types";
+import { type IPost } from "../../../types";
 import useUpdatePost from "../../../hooks/Posts/useUpdatePost";
 import PostForm from "../PostModal/PostModal";
 

@@ -1,11 +1,11 @@
 import Snackbar, { SnackbarCloseReason } from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { hideToast } from "../../store/toast/toastsSlice";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { hideToast } from "../../../store/toast/toastsSlice";
 
 const Toast = () => {
   const dispatch = useAppDispatch();
-  const toast = useAppSelector((state) => state.toasts.toast);
+  const { open, toast } = useAppSelector((state) => state.toasts);
   const handleClose = (
     _event?: React.SyntheticEvent | Event,
     reason?: SnackbarCloseReason
@@ -17,11 +17,7 @@ const Toast = () => {
   };
   return (
     <div>
-      <Snackbar
-        open={!!toast}
-        /* autoHideDuration={2000} */
-        onClose={handleClose}
-      >
+      <Snackbar open={open} onClose={handleClose} autoHideDuration={2000}>
         <Alert
           onClose={handleClose}
           severity={toast?.severity}

@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult, useQueryClient } from "@tanstack/react-query"
 import api from "../../services/axios-global"
-import { IPost } from "../../types"
+import { type IPost } from "../../types"
 import { AxiosError } from "axios"
 import { useAppSelector } from "../../store/hooks"
 

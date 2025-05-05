@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult, useQueryClient } from "@tanstack/react-query";
 import api from "../../services/axios-global";
-import { IComment, IPost } from "../../types/posts.types";
+import { type IComment, type IPost } from "../../types/posts.types";
 import { AxiosError } from "axios";
 import { useAppSelector } from "../../store/hooks";
 
