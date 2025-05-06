@@ -1,8 +1,8 @@
 import { IconButton } from "@mui/material";
 import ModeCommentRoundedIcon from "@mui/icons-material/ModeCommentRounded";
-import { useAppDispatch } from "../../../store/hooks";
-import { openModal } from "../../../store/Modal/modalSlice";
-import { type IPost } from "../../../types";
+import { useAppDispatch } from "@store/hooks";
+import { openModal } from "@store/Modal/modalSlice";
+import { type IPost } from "@/types";
 const AddCommentButton = ({
   id,
   title,

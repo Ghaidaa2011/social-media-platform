@@ -1,4 +1,4 @@
-import api from "../../../services/axios-global";
+import api from "@services/axios-global";
 import { useState } from "react";
 
 type StatusType = "idle" | "checking" | "available" | "unavailable" | "failed";

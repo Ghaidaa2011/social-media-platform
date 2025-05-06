@@ -1,7 +1,7 @@
 import Snackbar, { SnackbarCloseReason } from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { hideToast } from "../../../store/toast/toastsSlice";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { hideToast } from "@store/toast/toastsSlice";
 
 const Toast = () => {
   const dispatch = useAppDispatch();

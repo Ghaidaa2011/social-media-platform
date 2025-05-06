@@ -1,10 +1,10 @@
 import { Avatar, Box, Stack, Typography } from "@mui/material";
-import useGetUserPosts from "../../hooks/Users/useGetUserPosts";
-import useGetUser from "../../hooks/Users/useGetUser";
+import useGetUserPosts from "@hooks/Users/useGetUserPosts";
+import useGetUser from "@hooks/Users/useGetUser";
 import { useParams } from "react-router";
-import Post from "../../components/social/Posts/Post";
-import LoadingHandler from "../../components/feedback/LoadingHandler/LoadingHandler";
-import LottieHandler from "../../components/feedback/LottieHandler/LottieHandler";
+import Post from "@components/social/Posts/Post";
+import LoadingHandler from "@components/feedback/LoadingHandler/LoadingHandler";
+import LottieHandler from "@components/feedback/LottieHandler/LottieHandler";
 
 const Profile = () => {
   const paramId = useParams();

@@ -4,17 +4,17 @@ import { CircularProgress } from "@mui/material";
 //hooks
 import { useEffect } from "react";
 //store
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { actAuthLogin, resetUI } from "../../../store/auth/authSlice";
-import { showToast } from "../../../store/toast/toastsSlice";
-import { closeModal } from "../../../store/Modal/modalSlice";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { actAuthLogin, resetUI } from "@store/auth/authSlice";
+import { showToast } from "@store/toast/toastsSlice";
+import { closeModal } from "@store/Modal/modalSlice";
 //form
 import { SubmitHandler, useForm } from "react-hook-form";
 import { LoginSchema, LoginType } from "./LoginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 //components
 import Input from "../Input/Input";
-import CustomButton from "../../ui/CustomButton";
+import CustomButton from "@components/ui/CustomButton";
 
 const LoginModal = () => {
   const dispatch = useAppDispatch();

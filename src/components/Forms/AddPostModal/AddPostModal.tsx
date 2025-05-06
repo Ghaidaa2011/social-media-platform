@@ -2,7 +2,7 @@ import { useAppDispatch } from "@store/hooks";
 import { closeModal } from "@store/Modal/modalSlice";
 import { showToast } from "@store/toast/toastsSlice";
 import useCreatePost from "@hooks/Posts/useCreatePost";
-import PostForm from "@components/social/PostModal/PostModal";
+import { PostModal } from "@components/social";
 
 const AddPostModal = () => {
   const createPost = useCreatePost();
@@ -24,7 +24,7 @@ const AddPostModal = () => {
   };
 
   return (
-    <PostForm
+    <PostModal
       onSubmit={handleSubmit}
       isLoading={createPost.isPending}
       submitButtonText="Post"

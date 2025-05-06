@@ -1,8 +1,8 @@
-import { useAppDispatch } from "../../../store/hooks";
-import { closeModal } from "../../../store/Modal/modalSlice";
-import { showToast } from "../../../store/toast/toastsSlice";
-import { type IPost } from "../../../types";
-import useUpdatePost from "../../../hooks/Posts/useUpdatePost";
+import { useAppDispatch } from "@store/hooks";
+import { closeModal } from "@store/Modal/modalSlice";
+import { showToast } from "@store/toast/toastsSlice";
+import { type IPost } from "@/types";
+import useUpdatePost from "@hooks/Posts/useUpdatePost";
 import PostForm from "../PostModal/PostModal";
 
 const EditPostModal = ({ id: postId, title, body }: IPost) => {

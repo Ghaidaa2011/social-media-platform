@@ -14,17 +14,17 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 
-interface FileUploadInputProps<FieldValueType extends FieldValues>
+interface FileUploadInputProps<F extends FieldValues>
   extends Omit<ButtonProps, "onChange"> {
   label: string;
-  name: Path<FieldValueType>;
-  register: UseFormRegister<FieldValueType>;
+  name: Path<F>;
+  register: UseFormRegister<F>;
   errorMessage?: string;
   accept?: string;
   selectedFile?: File | null;
 }
 
-const FileUploadInput = <FieldValueType extends FieldValues>({
+const FileUploadInput = <F extends FieldValues>({
   label = "Photo",
   name,
   register,
@@ -35,7 +35,7 @@ const FileUploadInput = <FieldValueType extends FieldValues>({
   startIcon = <CloudUploadIcon />,
   sx = { marginTop: "3vh" },
   ...rest
-}: FileUploadInputProps<FieldValueType>) => {
+}: FileUploadInputProps<F>) => {
   return (
     <>
       <Button

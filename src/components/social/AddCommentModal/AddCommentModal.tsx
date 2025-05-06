@@ -14,20 +14,20 @@ import {
 //components
 import PostInfo from "../Posts/PostInfo";
 //store
-import { showToast } from "../../../store/toast/toastsSlice";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { closeModal } from "../../../store/Modal/modalSlice";
+import { showToast } from "@store/toast/toastsSlice";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { closeModal } from "@store/Modal/modalSlice";
 //ui
-import Input from "../../ui/Input";
+import Input from "@components/ui/Input";
 //hooks
 import { useCallback, useState } from "react";
 //feedback
-import Spinner from "../../feedback/Spinner/Spinner";
+import Spinner from "@components/feedback/Spinner/Spinner";
 //Queries
-import useGetPostInfo from "../../../hooks/Posts/useGetPostInfo";
-import useCreateComment from "../../../hooks/Comments/useCreateComment";
+import useGetPostInfo from "@hooks/Posts/useGetPostInfo";
+import useCreateComment from "@hooks/Comments/useCreateComment";
 //types
-import { type IPost } from "../../../types";
+import { type IPost } from "@/types";
 //react-router
 import { useNavigate } from "react-router";
 

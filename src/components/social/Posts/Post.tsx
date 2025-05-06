@@ -4,12 +4,14 @@ import { Card, Chip, Stack } from "@mui/material";
 //hooks
 import { memo } from "react";
 //components
-import AddCommentButton from "../AddCommentModal/AddCommentButton";
-import PostInfo from "./PostInfo";
-import EditPostButton from "../EditPostModal/EditPostButton";
-import DeletePostButton from "../DeletePostModal/DeletePostButton";
+import {
+  AddCommentButton,
+  PostInfo,
+  EditPostButton,
+  DeletePostButton,
+} from "@components/social";
 //types
-import { type IPost } from "../../../types";
+import { type IPost } from "@/types";
 
 const Post = memo(
   ({

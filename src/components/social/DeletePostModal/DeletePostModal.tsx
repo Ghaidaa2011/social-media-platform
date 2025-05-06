@@ -4,10 +4,10 @@ import {
   DialogContent,
   DialogContentText,
 } from "@mui/material";
-import { useAppDispatch } from "../../../store/hooks";
-import { closeModal } from "../../../store/Modal/modalSlice";
-import useDeletePost from "../../../hooks/Posts/useDeletePost";
-import { showToast } from "../../../store/toast/toastsSlice";
+import { useAppDispatch } from "@store/hooks";
+import { closeModal } from "@store/Modal/modalSlice";
+import useDeletePost from "@hooks/Posts/useDeletePost";
+import { showToast } from "@store/toast/toastsSlice";
 
 const DeletePostModal = ({ id }: { id: number }) => {
   const dispatch = useAppDispatch();

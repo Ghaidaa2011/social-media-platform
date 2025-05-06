@@ -1,7 +1,7 @@
 import { IconButton } from "@mui/material";
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { openModal } from "../../../store/Modal/modalSlice";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { openModal } from "@store/Modal/modalSlice";
 import { memo } from "react";
 
 const AddPostButton = memo(() => {

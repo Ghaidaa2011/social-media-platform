@@ -7,10 +7,10 @@ import {
 //react
 import { /*FocusEvent,*/ useEffect } from "react";
 //store
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { actAuthRegister, resetUI } from "../../../store/auth/authSlice";
-import { closeModal } from "../../../store/Modal/modalSlice";
-import { showToast } from "../../../store/toast/toastsSlice";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { actAuthRegister, resetUI } from "@store/auth/authSlice";
+import { closeModal } from "@store/Modal/modalSlice";
+import { showToast } from "@store/toast/toastsSlice";
 //form
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

@@ -1,14 +1,13 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
 //Layouts
-const MainLayout = lazy(() => import("../layouts/MainLayout"));
+const MainLayout = lazy(() => import("@layouts/MainLayout"));
 //Pages
-const Home = lazy(() => import("../pages/Home/Home"));
-const Profile = lazy(() => import("../pages/Profile/Profile"));
-import Error from "../pages/Error/Error";
+const Home = lazy(() => import("@pages/Home/Home"));
+const Profile = lazy(() => import("@pages/Profile/Profile"));
+const Error = lazy(() => import("@pages/Error/Error"));
 //components
-import Spinner from "../components/feedback/Spinner/Spinner";
-import PageSuspenseFallback from "../components/feedback/PageSuspenseFallback/PageSuspenseFallback";
+import { Spinner, PageSuspenseFallback } from "@components/feedback";
 
 const router = createBrowserRouter([
   {

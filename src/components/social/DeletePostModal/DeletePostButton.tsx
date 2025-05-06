@@ -1,7 +1,7 @@
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { openModal } from "../../../store/Modal/modalSlice";
-import { useAppDispatch } from "../../../store/hooks";
+import { openModal } from "@store/Modal/modalSlice";
+import { useAppDispatch } from "@store/hooks";
 
 const DeletePostButton = ({ id }: { id: number }) => {
   const dispatch = useAppDispatch();

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import api from "../../services/axios-global"
-import { IUser } from "../../types/user.types";
+import api from "@services/axios-global"
+import { IUser } from "@/types/user.types";
 
 interface responseType {
   data: IUser

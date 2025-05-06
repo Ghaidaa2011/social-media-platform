@@ -1,4 +1,4 @@
-import PostsList from "../../components/social/Posts/PostsList";
+import PostsList from "@components/social/Posts/PostsList";
 const Home = () => {
   return <PostsList />;
 };

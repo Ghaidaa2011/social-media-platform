@@ -2,16 +2,16 @@ import { Path, FieldValues, UseFormRegister } from "react-hook-form";
 import { TextField, TextFieldProps } from "@mui/material";
 import { FocusEvent } from "react";
 
-type InputProsType<FieldValueType extends FieldValues> = {
+type InputProsType<F extends FieldValues> = {
   label: string;
-  name: Path<FieldValueType>;
+  name: Path<F>;
   type?: string;
-  register: UseFormRegister<FieldValueType>;
+  register: UseFormRegister<F>;
   onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
   errorMessage?: string;
 } & Omit<TextFieldProps, "name" | "type">;
 
-const Input = <FieldValueType extends FieldValues>({
+const Input = <F extends FieldValues>({
   label,
   name,
   type = "text",
@@ -19,7 +19,7 @@ const Input = <FieldValueType extends FieldValues>({
   onBlur,
   errorMessage,
   ...rest
-}: InputProsType<FieldValueType>) => {
+}: InputProsType<F>) => {
   const onBlurHandler = (e: FocusEvent<HTMLInputElement>) => {
     if (onBlur) {
       onBlur(e);

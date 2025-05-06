@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
-import { useAppDispatch } from "../../../store/hooks";
-import { openModal } from "../../../store/Modal/modalSlice";
+import { useAppDispatch } from "@store/hooks";
+import { openModal } from "@store/Modal/modalSlice";
 
 const LoginButton = () => {
   const dispatch = useAppDispatch();

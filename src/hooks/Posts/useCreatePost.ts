@@ -1,8 +1,8 @@
 import { useMutation, UseMutationResult, useQueryClient } from "@tanstack/react-query";
-import api from "../../services/axios-global"
-import { type IPost } from "../../types";
+import api from "@services/axios-global"
+import { type IPost } from "@/types";
 import { AxiosError } from "axios";
-import { useAppSelector } from "../../store/hooks";
+import { useAppSelector } from "@store/hooks";
 
 type TFormData = {
   title: string

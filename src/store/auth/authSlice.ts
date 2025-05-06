@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import actAuthLogin from "./act/actAuthLogin";
-import { isString, type TLoading } from "../../types";
+import { isString, type TLoading } from "@/types";
 import actAuthLogout from "./act/actAuthLogout";
 import actAuthRegister from "./act/actAuthRegister";
 

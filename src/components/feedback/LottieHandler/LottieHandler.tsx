@@ -1,9 +1,9 @@
 import { Stack, Typography } from "@mui/material";
 import Lottie from "lottie-react";
-import loading from "../../../assets/lottieFiles/loading.json";
-import error from "../../../assets/lottieFiles/error.json";
-import notFound from "../../../assets/lottieFiles/notFound.json";
-import empty from "../../../assets/lottieFiles/empty.json";
+import loading from "@assets/lottieFiles/loading.json";
+import error from "@assets/lottieFiles/error.json";
+import notFound from "@assets/lottieFiles/notFound.json";
+import empty from "@assets/lottieFiles/empty.json";
 
 const lottieMap = {
   loading,

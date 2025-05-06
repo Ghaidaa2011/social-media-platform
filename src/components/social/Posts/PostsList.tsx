@@ -1,11 +1,10 @@
 import { Box, Stack } from "@mui/material";
 import Post from "./Post";
-import useInfinitePosts from "../../../hooks/Posts/useInfinitePosts";
+import useInfinitePosts from "@hooks/Posts/useInfinitePosts";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
-import { type IPost } from "../../../types";
-import Spinner from "../../feedback/Spinner/Spinner";
-import Loading from "../../feedback/LoadingHandler/LoadingHandler";
+import { type IPost } from "@/types";
+import { Spinner, LoadingHandler } from "@components/feedback";
 
 const PostsList = () => {
   const { data, status, fetchNextPage, hasNextPage, isFetchingNextPage } =
@@ -21,7 +20,7 @@ const PostsList = () => {
   const postList = posts.map((post: IPost) => <Post key={post.id} {...post} />);
   return (
     <Stack>
-      <Loading status={status} type="posts">
+      <LoadingHandler status={status} type="posts">
         {postList}
         <Box
           ref={ref}
@@ -29,7 +28,7 @@ const PostsList = () => {
         >
           {isFetchingNextPage && hasNextPage && <Spinner />}
         </Box>
-      </Loading>
+      </LoadingHandler>
     </Stack>
   );
 };

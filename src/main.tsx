@@ -1,7 +1,7 @@
 // import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 //App
-import AppRouter from "./routes/AppRouter.tsx";
+import AppRouter from "@routes/AppRouter.tsx";
 
 //Store
 import { Provider } from "react-redux";

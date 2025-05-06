@@ -5,8 +5,8 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { Divider } from "@mui/material";
 
-import { IAuthor } from "../../../types/posts.types";
-import { useAppSelector } from "../../../store/hooks";
+import { IAuthor } from "@/types/posts.types";
+import { useAppSelector } from "@store/hooks";
 import { useNavigate } from "react-router";
 
 export interface PostInfoProps {

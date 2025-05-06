@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { AxiosErrorHandler } from "../../../utils";
-import api from "../../../services/axios-global";
+import { AxiosErrorHandler } from "@/utils";
+import api from "@/services/axios-global";
 
 type TFormData = {
   username: string;

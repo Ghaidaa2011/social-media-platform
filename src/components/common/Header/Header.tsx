@@ -11,13 +11,13 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import { showToast } from "../../../store/toast/toastsSlice";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { actAuthLogout } from "../../../store/auth/authSlice";
+import { showToast } from "@store/toast/toastsSlice";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { actAuthLogout } from "@store/auth/authSlice";
 import { CircularProgress } from "@mui/material";
 import { useNavigate } from "react-router";
-import LoginButton from "../../auth/LoginModal/LoginButton";
-import RegisterButton from "../../auth/RegisterModal/RegisterButton";
+import LoginButton from "@components/auth/LoginModal/LoginButton";
+import RegisterButton from "@components/auth/RegisterModal/RegisterButton";
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(

@@ -1,16 +1,16 @@
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 
-import { closeModal } from "../../../store/Modal/modalSlice";
+import { closeModal } from "@store/Modal/modalSlice";
 
 import Modal from "./Modal";
 
-import AddPostModal from "../../social/AddPostModal/AddPostModal";
-import LoginModal from "../../auth/LoginModal/LoginModal";
-import RegisterModal from "../../auth/RegisterModal/RegisterModal";
+import AddPostModal from "@components/social/AddPostModal/AddPostModal";
+import LoginModal from "@components/auth/LoginModal/LoginModal";
+import RegisterModal from "@components/auth/RegisterModal/RegisterModal";
 
-import AddCommentModal from "../../social/AddCommentModal/AddCommentModal";
-import EditPostModal from "../../social/EditPostModal/EditPostModal";
-import DeletePostModal from "../../social/DeletePostModal/DeletePostModal";
+import AddCommentModal from "@components/social/AddCommentModal/AddCommentModal";
+import EditPostModal from "@components/social/EditPostModal/EditPostModal";
+import DeletePostModal from "@components/social/DeletePostModal/DeletePostModal";
 
 const ModalManger = () => {
   const { isOpen, titleModal, componentName, childrenProps } = useAppSelector(

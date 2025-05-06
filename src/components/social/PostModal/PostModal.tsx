@@ -5,8 +5,8 @@ import {
   DialogContent,
 } from "@mui/material";
 import { useCallback, useState } from "react";
-import Input from "../../ui/Input";
-import FileUploadButton from "../../ui/FileUploadButton";
+import Input from "@components/ui/Input";
+import FileUploadButton from "@components/ui/FileUploadButton";
 
 interface FormData {
   title: string;

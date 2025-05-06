@@ -1,5 +1,5 @@
 import { Stack } from "@mui/material";
-import LottieHandler from "../../components/feedback/LottieHandler/LottieHandler";
+import LottieHandler from "@components/feedback/LottieHandler/LottieHandler";
 import { Link } from "react-router";
 const Error = () => {
   return (

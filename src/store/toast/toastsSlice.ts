@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { IToast } from "../../types/toast.types";
+import { type IToast } from "@/types";
 
 export interface ITodosState {
   open: boolean;
